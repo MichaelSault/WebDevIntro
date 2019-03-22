@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Question 4</title>
+		<style>
+			.animate {
+				color: pink;
+				height: 50;
+				width: 120px;
+				position: absolute;
+				left: 0px;
+				right: 0px;
+				font-size: 50px;
+				font-weight: 50;
+				animation: moveSquare 10s linear infinite;
+			}
+
+			@keyframes moveSquare{
+				0% {left: 0; top: 0; color: darkred; background-color: lightgreen;}
+				25% {left: 500px; top: 0; color: darkorange; background-color: lightblue;}
+				50% {left: 500px; top: 500px; color: darkblue; background-color: orange;}
+				75% {left: 0; top: 500px; color: darkgreen; background-color: pink;}
+				100% {left: 0; top: 0; color: darkred; background-color: lightgreen;}
+			}
+		</style>
+	</head>
+	<body>
+		<div class = "animate">TEST</div>
+	</body>
+</html>

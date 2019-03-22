@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Question 6</title>
+		<script type = "text/javascript">
+			var palindrome; //String for the input value
+			var num1;		//int for the input value
+
+			palindrome = window.prompt("Enter a 5 digit number: "); //promts user for input
+			num1 = parseInt(palindrome); //turns user input from String to int
+
+			//this while loop checks if the number is 5 digits and prompts the user to re-enter if not
+			while (num1.toString().length != 5){ //by changing to int(above) and back to String, it removes any 0's out front.
+				alert("The number must be 5 digits long! Try again:");
+				palindrome = window.prompt("Enter a 5 digit number: ");
+				num1 = parseInt(palindrome);
+			}
+
+			//determines if the number is a palindrome and outputs result
+			if (num1 == num1.toString().split('').reverse().join('')){
+				document.writeln("<h1>The number "+ num1 +" is a palindrome!</h1>");
+			} else {
+				document.writeln("<h1>The number "+ num1 +" is NOT a palindrome!</h1>");
+			}
+			
+		</script>
+	</head><body></body>
+</html>

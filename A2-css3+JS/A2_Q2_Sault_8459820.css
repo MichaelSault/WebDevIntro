@@ -1,0 +1,23 @@
+/* Question 2 */
+div {
+	margin: 5px;
+   	width: 150px;
+   	padding-left: 8px;
+   	padding-right: 8px;
+   	border: 5px solid #990000;
+   	background-color: #ffffcc;
+   	text-align: center;
+
+   	color: green;
+   }
+
+div:hover {
+    border: 10px solid #ffffcc;
+   	background-color: #990000;
+   	color: white;
+   }
+
+a:visited 
+{
+    color: inherit;
+}

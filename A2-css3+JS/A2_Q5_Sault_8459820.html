@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Question 5</title>
+		<script type = "text/javascript">
+			var firstNumber;	//first user defined number stored as a String
+			var secondNumber;	//second user defined number stored as a String
+			var num1;	//var firstNumber as an int
+			var num2;	//var secondNumber as an int
+
+			//prompts user to input two numbers
+			firstNumber = window.prompt("Enter first number: ");
+			secondNumber = window.prompt("Enter second number: ");
+
+			//changes user input from String to int
+			num1 = parseInt(firstNumber);
+			num2 = parseInt(secondNumber);
+
+			//checks if the first number is a multiple of the second and prints the result
+			document.writeln("<h1>The number " + num1 + " is " + (num1 % num2 == 0 ? "" : "not") + " a multiple of "+ num2 + "!</h1>");
+
+		</script>
+	</head><body></body>
+</html>

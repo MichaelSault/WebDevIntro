@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8">
+        <title>Question 7</title>
+    </head>
+    <body>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Product id</th>
+                    <th>Quantity Sold</th>
+                    <th>Retail Price ($)</th>
+                    <th>Total Sales ($)</th>
+                </tr>
+            </thead>
+            <tbody id="outputTable">
+            </tbody>
+        </table>
+
+        <script>
+            //sets the price for each product as defined in Q7
+            var productsSold = [ 
+                { price: 2.98, quantity: 0 }, 
+                { price: 4.50, quantity: 0 },
+                { price: 9.98, quantity: 0 },
+                { price: 4.49, quantity: 0 },
+                { price: 6.87, quantity: 0 } ];
+
+            //inital window.prompt call for product id
+            var response = window.prompt("Enter the Product id(1-5): \nPress \"Cancel\" to complete input.", "Product id");
+
+            //Make sure response is not-empty
+            while (response != null) {
+
+                //check if product id is between 1 and 5
+                if (isNaN(response) || parseInt(response) < 0 || parseInt(response) > 5) {
+                    response = prompt("Invalid Input!\nWhat is the product number? (1-5)", "Product id");
+                    continue;
+                }
+
+                //prompt for quantity purchased
+                var count = prompt("Quantity purchased: ", "Number purchased");
+
+                //checks quantity sold is a positive number
+                while (isNaN(count) || parseInt(count) < 0) {
+                    if (count == null) {
+                        break;
+                    }
+                    //else ask for a positive quantity
+                    count = prompt("Invalid Input!\nQuantity purchased? (>= 0)", "Number purchased");
+
+                }
+
+                //End loop on cancel
+                if (count == null) {
+                    break;
+                }
+
+                //Switch statement to add up quantites for each of the 5 products
+                switch (parseInt(response)) {
+                    case 1:
+                        productsSold[0].quantity += parseInt(count);
+                        break;
+                    case 2:
+                        productsSold[1].quantity += parseInt(count);
+                        break;
+                    case 3:
+                        productsSold[2].quantity += parseInt(count);
+                        break;
+                    case 4:
+                        productsSold[3].quantity += parseInt(count);
+                        break;
+                    case 5:
+                        productsSold[4].quantity += parseInt(count);
+                }
+
+                //prompt for next product
+                response = prompt("What is the product number? (1-5). \nPress \"Cancel\" to complete input.", "product number");
+            }
+
+            //generate output table rows to be added to outputTable declaired above
+            productsSold.forEach(function(value, key) {
+
+                //Create rows for each item
+                var row = document.createElement('tr');
+                var name = document.createElement('td');
+                var sold = document.createElement('td');
+                var pricePer = document.createElement('td');
+                var totalSales = document.createElement('td');
+
+                //Fill the table data in
+                name.textContent = (key+1);
+                sold.textContent = value.quantity;
+                pricePer.textContent = value.price;
+                totalSales.textContent = value.price * value.quantity;
+
+                //Append the data to the row
+                row.appendChild(name);
+                row.appendChild(sold);
+                row.appendChild(pricePer);
+                row.appendChild(totalSales);
+
+                //append the row to the table defined above (outputTable)
+                outputTable.appendChild(row)
+            });
+        </script>
+    </body>
+</html>
