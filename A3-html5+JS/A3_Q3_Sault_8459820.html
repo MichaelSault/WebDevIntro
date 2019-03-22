@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8">
+        <title>Question 3</title>
+    </head>
+    <body>
+        <h2>Guess the Number</h2>
+		Guess a number between 1 and 1000:
+		<label><input id="num" type="text" value=""></label><br>
+		<button id="submit">Guess!</button>
+		<div id="output"><h4>Status:</h4></div>
+		<div id="message"></div>
+		
+		
+		<script>
+			document.getElementById("submit").addEventListener("click",guessfun);
+			
+			var guesses = 0;
+			var secret = Math.floor(Math.random() * 1000) + 1;
+			
+			function guessfun() {
+				var guess = parseInt(num.value);
+				if (isNaN(guess)){
+				    alert("Wrong input! You should enter a number between 1 and 1000.")
+				} else {
+                    guesses += 1;
+                    if (guess === secret){
+                        document.getElementById("output").innerHTML += guesses + ". Congratulations! You guessed the number!<br>";
+                        gameEnd();
+                        document.getElementById("restart").addEventListener("click",newGame);
+                    } else if (guess > secret){
+                        document.getElementById("output").innerHTML += guesses + ". Too high. Try again.<br>";
+                    } else {
+                        document.getElementById("output").innerHTML += guesses + ". Too low. Try again.<br>";;
+                    }
+				}
+			}
+			
+			function gameEnd(){
+				if (guesses < 10){
+					document.getElementById("message").innerHTML += "Either you know the secret or you got lucky!<br>";
+				} else if (guesses === 10){
+					document.getElementById("message").innerHTML += "Ahah! You know the secret!<br>";
+				} else {
+					document.getElementById("message").innerHTML += "You should be able to do better!<br>";
+				}
+				
+				document.getElementById("message").innerHTML += "<button id='restart'>Play Again?</button>";
+			}
+			
+			function newGame(){
+				document.getElementById("output").innerHTML = "<h4>Results:</h4>";
+				guesses = 0;
+				secret = Math.floor(Math.random() * 1000) + 1;
+				document.getElementById("message").innerHTML = "";
+			}
+			
+		</script>
+    </body>
+</html>

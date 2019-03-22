@@ -1,0 +1,106 @@
+// create (declare) one new array
+		var posH = 1; // tracks hare's position
+		var posT = 1; // tracks tortoise's position
+		var track = new Array (70); // array to count the number of races finished
+
+		var intervalId;
+		raceCounter = 0; // used for the loop
+		
+		for (var i = 0;i < track.length; ++i) //sets values of the squares on the race track
+			track[i] = i;
+		outputArray(track);
+
+		// output posT && posH in Array
+		function outputArray(theArray)
+		{
+			document.writeln("<table border = \"1\"");
+			document.writeln("<tbody><tr>");
+			var toPrint = "&nbsp;";
+			for (var i = 1; i <= theArray.length; i++)
+			{
+				toPrint = "&nbsp;";
+				if (i == posT) toPrint = "T";
+				if (i == posH) toPrint = "H";
+				if ((i == posT) && (i == posH)) toPrint = "OUCH!!!"; // tortoise and hare on same square
+				document.writeln("<td>" + toPrint + "</td>");
+			}
+			document.writeln("</tr></tbody></table>");
+		}
+
+		function updateClock(){
+			moveTort();
+			moveHaire();
+			//iteratred the race counter
+			if (posT > 70) posT = 70;
+			if (posH > 70) posH = 70;
+			outputArray(track);
+			if ((posH == 70) || (posT == 70))
+				endRace();
+			else
+				intervalId = window.setInterval(updateClock(), 1000);
+		}
+
+		//race starts and 
+		function startRace(){
+			document.write("ON YOUR MARK, GET SET<br/>BANG!!!<br/>AND THEY'RE OFF!!!<br/>");
+			outputArray(track);
+			intervalId = window.setInterval(updateClock(), 1000); // Call updateClock() every second
+		} // ends function startRace
+
+		function moveTort(){// moves the tortoise position
+			i = Math.floor( Math.random() * 11);
+			
+			//if fast plod, move 3 right
+			if ((i >= 1) && (i <= 5)){ 
+				posT = posT + 3;       
+			}
+			if ((i >= 6) && (i <= 7)){	// if slip, move 6 left
+				posT = posT - 6;
+			}
+			if ((i >= 8) && (i <= 10)){	// if slow plod, move 1 right
+				posT = posT + 1;
+			}
+			if (posT < 1){	//if tortoise would slip lower than 1, go to 1
+				posT = 1;
+			}
+		}
+
+		function moveHaire(){// moves the haire's position
+			i = Math.floor(Math.random() * 11);
+
+			if ((i >= 1) && (i <= 2)){// if sleeping, do not move
+				posH = posH + 0;      
+			}
+			if ((i >= 3) && (i <= 4)){//if big hop, move 9 right
+				posH = posH + 9;      
+			}
+			if (5 == i){	//if big slip, move 12 left
+				posH = posH - 12;
+			}
+			if ((i >= 7) && (i <= 8)){	//if small hop, move 1 right
+				posH = posH + 1;
+			}
+			if ((i >= 9) && (i <= 10)){	//if small slip, move 2 left
+				posH = posH - 2;
+			}
+			if (posH < 1){	//if haire would slip lower than 1, go to 1
+				posH = 1;              // move back to square 1
+			}
+		}
+	
+	//end race and announce the winner!
+	function endRace()
+	{
+		clearInterval(intervalId);
+		if ((posT == 70 - 1) && (posH == 70 - 1)) //if it is a tie
+			document.write("<br/><br/><b>IT'S A TIE.</b>");
+		else {
+			if (posT >= 69) {	//if tortoise wins
+				posT = 70 - 1;
+				document.write("<br/><br/><b>TORTOISE WINS!!! YAY!!!</b>");
+			} if (posH >= 69) {	//if haire wins
+				posH = 70 - 1;
+				document.write("<br/><br/><b>HARE WINS. YUCK!</b>");
+			}
+		}
+	}

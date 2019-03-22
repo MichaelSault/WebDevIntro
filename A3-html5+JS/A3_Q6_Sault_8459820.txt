@@ -1,0 +1,16 @@
+window.onload = function (){
+    var baseWords;
+    document.getElementById("translate").addEventListener("click", toPiglat);
+
+    function toPiglat(){
+        baseWords = document.getElementById("original").value.split(' ');
+
+        for (i = 0; i < baseWords.length; i++){
+            baseWords[i] += baseWords[i].charAt(0) + "ay";
+            baseWords[i] = baseWords[i].substr(1);
+        }
+        for (j = 0; j < baseWords.length; j++){
+            document.getElementById("output").textContent += baseWords[j] + " ";
+        }
+    }
+};

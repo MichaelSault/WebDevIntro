@@ -1,0 +1,25 @@
+window.onload = function() {
+
+    //generate the array & set the first two elements to 0
+    var ints = new Array(1000);
+    ints.fill(1, 0, 1000);
+    ints[0] = 0;
+    ints[1] = 0;
+
+    //calculates primes within the array
+    for (var prime = 2; prime < Math.sqrt(1000); prime++) {
+        if (ints[prime] === 1) {
+            for (var j = 2 * prime; j < 1000; j += prime) {
+                ints[j] = 0;
+            }
+        }
+    }
+
+    //set prime indexs to 1 and print
+    for(var min = 0, max = ints.length; min < max; min++){
+        if(ints[min] === 1)
+            document.getElementById("output").innerHTML += min + " ";
+    }
+
+
+};

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "UTF-8">
+		<title>Question 1</title>
+	</head>
+	<body>
+		<h1>Temperature Conversion</h1>
+		<label><input id='num' type="number" min="99999" value="0"></label><br>
+		<button id="cel2fahr">C-->F</button><button id="fahr2cel">F-->C</button>
+		<div id="output"><h2>Converted Temp:</h2></div>
+
+		<script>
+			document.getElementById("cel2fahr").addEventListener("click", fahrenheit);
+			document.getElementById("fahr2cel").addEventListener("click", celsius);
+
+			function fahrenheit(){
+				f = 9.0/5.0 * num.value + 32;
+				document.getElementById("output").innerHTML += num.value + "<sup>&#9900</sup> C is equal to " + f.toFixed(2) + "<sup>&#9900</sup> F <br>";
+			};
+			
+			function celsius(){
+				c = 5.0/9.0 * (num.value - 32);
+				document.getElementById("output").innerHTML += num.value + "<sup>&#9900</sup> F is equal to " + c.toFixed(2) + "<sup>&#9900</sup> C <br>";
+			};
+		</script>
+	</body>
+</html>
+
