@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<title>Question 7</title>
+	</head>
+	<body>
+		<h1>Sign Up:</h1>
+		<form method = "post" autocomplete= "on">
+			
+			<p><label>First Name:
+					<input name = "name" type = "text" size = "25" maxlength = "30" required/>
+				</label></p>
+			<p><label>Last Name:
+					<input name = "last" type = "text" size = "25" maxlength = "30" required/>
+				</label></p>
+			<p><label>E-Mail:
+				<input name = "email" type = "email" size = "25" maxlength = "30" required/>(name@domain.com)
+			</label></p>				
+			
+			<details>
+  				<summary>What Year Are You In? (Optional)</summary>
+  				<input type = "text" id = "year" list = "days_list">
+				<datalist id = "days_list">
+					<option value = "Freshman">1st</option>
+					<option value = "Sophomore">2nd</option>
+					<option value = "Junior">3rd</option>
+					<option value = "Senior">4th</option>
+					<option value = "Graduate">Grad</option>
+					<option value = "Not Yet In University">NA</option>
+				</datalist>
+				
+			</p>
+			</details>
+
+			<p>
+				<input type = "submit" value = "Submit"/>
+				<input type = "reset" value = "Clear"/>
+			</p>
+		</form>
+	</body>
+</html>
